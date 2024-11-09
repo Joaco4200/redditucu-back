@@ -1,4 +1,4 @@
-package com.example.demo.user;
+package com.example.demo.Clases;
 
 import jakarta.persistence.*;
 
@@ -11,15 +11,16 @@ public class User {
 //            sequenceName = "user_sequence",
 //            allocationSize= 1
 //    )
-//    @GeneratedValue(
-//            strategy = GenerationType.SEQUENCE,
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
 //            generator = "user_sequence"
-//    )
+    )
 
     private Integer id;
     private String auth0_id;
     private String name;
     private String email;
+    private String imgUrl;
 
     public User() {
     }
@@ -61,5 +62,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }
