@@ -3,21 +3,22 @@ package com.example.demo.Clases;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name= "users")
+@Table(name = "\"user\"")
 public class User {
+
     @Id
-//    @SequenceGenerator(
-//            name= "user_sequence",
-//            sequenceName = "user_sequence",
-//            allocationSize= 1
-//    )
+    @SequenceGenerator(
+            name= "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize= 1
+    )
     @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-//            generator = "user_sequence"
+            strategy = GenerationType.SEQUENCE,
+           generator = "user_sequence"
     )
 
     private Integer id;
-    private String auth0_id;
+    private String auth0id;
     private String name;
     private String email;
     private String imgUrl;
@@ -25,19 +26,19 @@ public class User {
     public User() {
     }
 
-    public User(String auth0_id, Integer id, String name, String email) {
-        this.auth0_id = auth0_id;
-        this.id = id;
-        this.name = name;
-        this.email = email;
+//    public User(String auth0id, Integer id, String name, String email) {
+//        this.auth0id = auth0id;
+//        this.id = id;
+//        this.name = name;
+//        this.email = email;
+//    }
+
+    public String getAuth0id() {
+        return auth0id;
     }
 
-    public String getAuth0_id() {
-        return auth0_id;
-    }
-
-    public void setAuth0_id(String auth0_id) {
-        this.auth0_id = auth0_id;
+    public void setAuth0id(String auth0id) {
+        this.auth0id = auth0id;
     }
 
     public Integer getId() {
@@ -70,5 +71,16 @@ public class User {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", auth0_id='" + auth0id + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
     }
 }

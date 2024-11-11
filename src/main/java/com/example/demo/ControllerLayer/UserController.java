@@ -5,8 +5,6 @@ import com.example.demo.ServiceLayer.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 
 @RestController
 //@RequestMapping(path = "api/v1/user")
@@ -22,6 +20,6 @@ public class UserController {
 
     @PostMapping("/user")
     public User saveUser(@RequestBody User user) {
-        return userService.registerUser(user.getAuth0_id(), user.getName(), user.getEmail(), user.getImgUrl());
+        return userService.registerUser(user.getAuth0id(), user.getName(), user.getEmail(), user.getImgUrl());
     }
 }
