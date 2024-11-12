@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-//@RequestMapping(path = "api/v1/user")
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
@@ -20,6 +19,9 @@ public class UserController {
 
     @PostMapping("/user")
     public User saveUser(@RequestBody User user) {
-        return userService.registerUser(user.getAuth0id(), user.getName(), user.getEmail(), user.getImgUrl());
+        return userService.registerUser(user.getName(), user.getEmail(), user.getImgUrl(),user.getAuth0id());
     }
 }
+
+
+

@@ -2,6 +2,8 @@ package com.example.demo.Clases;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "\"user\"")
 public class User {
@@ -18,10 +20,14 @@ public class User {
     )
 
     private Integer id;
-    private String auth0id;
+    private String auth0id ;
     private String name;
     private String email;
     private String imgUrl;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts;
+
 
     public User() {
     }

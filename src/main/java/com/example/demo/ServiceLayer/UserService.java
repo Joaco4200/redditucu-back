@@ -16,21 +16,20 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-//    public List<User> getUsers(){
-//        return userRepository.findAll();
-//    }
+    public User getUserByAuth0Id(String auth0Id) {
+        return userRepository.findByauth0id(auth0Id);
+    }
 
     public User registerUser(String name,String email, String auth0id, String imgUrl){
-        User existingUser= userRepository.findByAuth0Id(auth0id);
+        User existingUser= userRepository.findByauth0id(auth0id);
 
         if(existingUser == null){
 
             existingUser = new User();
-            existingUser.setAuth0id(auth0id);
-            existingUser.setName(name);
             existingUser.setEmail(email);
+            existingUser.setName(name);
             existingUser.setImgUrl(imgUrl);
-
+            existingUser.setAuth0id(auth0id);
             return userRepository.save(existingUser);
         }
         return existingUser;
