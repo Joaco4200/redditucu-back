@@ -19,12 +19,17 @@ public class PostController {
     }
 
     @GetMapping
-    public List<Post> getPostByUserId(@RequestBody Integer id) {
+    public List<Post> getPostByUserId(Integer id) {
         return postService.getPostById(id);
     }
 
+    @GetMapping("/getpost")
+    public List<Post> getAllPosts() {
+        return postService.getAllPosts();
+    }
+
     @PostMapping("/post")
-    public Post savePost(@RequestBody Post post, Integer userid) {
-        return postService.savePost(post, userid);
+    public Post savePost(@RequestBody Post post) {
+        return postService.savePost(post.getUser().getAuth0id(), post.getTitle(), post.getContent());
     }
 }

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,17 +26,19 @@ public class PostService {
         this.userRepository = userRepository;
     }
 
-    //METODOS SERVICE:  devolver post x usuario,y devolver post por post_Id.
-
-
     public List<Post> getPostById(Integer userId){
         return postRepository.findByUserId(userId);
     }
 
-    public Post savePost(Post post, Integer userid){
-        User user= userRepository.findById(userid);
-        post.setUser(user);
-        return postRepository.save(post);
+    public Post savePost(String auth0id, String title, String content){
+        User user= userRepository.findByauth0id(auth0id);
+        Post newPost= new Post();
+        newPost.setUser(user);
+        newPost.setTitle(title);
+        newPost.setContent(content);
+        newPost.setCreated_at(LocalDate.now());
+
+        return postRepository.save(newPost);
     }
 
     public List<Post> getAllPosts(){

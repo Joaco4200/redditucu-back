@@ -25,19 +25,12 @@ public class User {
     private String email;
     private String imgUrl;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Post> posts;
 
 
     public User() {
     }
-
-//    public User(String auth0id, Integer id, String name, String email) {
-//        this.auth0id = auth0id;
-//        this.id = id;
-//        this.name = name;
-//        this.email = email;
-//    }
 
     public String getAuth0id() {
         return auth0id;

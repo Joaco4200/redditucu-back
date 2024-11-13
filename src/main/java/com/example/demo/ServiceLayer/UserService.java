@@ -20,14 +20,14 @@ public class UserService {
         return userRepository.findByauth0id(auth0Id);
     }
 
-    public User registerUser(String name,String email, String auth0id, String imgUrl){
+    public User registerUser(String name,String email, String imgUrl, String auth0id){
         User existingUser= userRepository.findByauth0id(auth0id);
 
         if(existingUser == null){
 
             existingUser = new User();
-            existingUser.setEmail(email);
             existingUser.setName(name);
+            existingUser.setEmail(email);
             existingUser.setImgUrl(imgUrl);
             existingUser.setAuth0id(auth0id);
             return userRepository.save(existingUser);
