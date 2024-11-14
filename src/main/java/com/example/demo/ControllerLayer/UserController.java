@@ -17,8 +17,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/user")
-    public User saveUser(@RequestBody User user) {
+    @PostMapping("/user") //Indica que saveUser maneja la peticion  POST(crear o agregar) que lleguen a la url /user.
+    public User saveUser(@RequestBody User user) { //requesteBody indica que el cuerpo de la solicitud http debe ser convertido a ojeto User. Spring automaticamente convierte el JSON que viene en el cuerpo de la solicitud en un objeto user usando un covertidor(Jackson)(el json debe contenerpropiedades correspondientes a la clase User.
         return userService.registerUser(user.getName(), user.getEmail(), user.getImgUrl(),user.getAuth0id());
     }
 }

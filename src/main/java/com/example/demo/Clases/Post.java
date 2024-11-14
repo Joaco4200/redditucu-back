@@ -31,17 +31,8 @@ public class Post {
     private User user ;
 
 
-
     public Post() {
     };
-
-//    public Post(Integer id, Integer user_id, String content, LocalDateTime created_at) {
-//        this.id = id;
-//        this.user_id = user_id;
-//        this.content = content;
-//        this.created_at = created_at;
-//}
-
 
 
     public Integer getId() {

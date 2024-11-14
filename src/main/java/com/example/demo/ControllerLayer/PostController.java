@@ -18,10 +18,10 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping
-    public List<Post> getPostByUserId(Integer id) {
-        return postService.getPostById(id);
-    }
+//    @GetMapping
+//    public List<Post> getPostByUserId(Integer id) {
+//        return postService.getPostById(id);
+//    }
 
     @GetMapping("/getpost")
     public List<Post> getAllPosts() {

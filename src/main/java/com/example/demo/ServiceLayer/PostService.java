@@ -26,12 +26,9 @@ public class PostService {
         this.userRepository = userRepository;
     }
 
-    public List<Post> getPostById(Integer userId){
-        return postRepository.findByUserId(userId);
-    }
-
     public Post savePost(String auth0id, String title, String content){
         User user= userRepository.findByauth0id(auth0id);
+
         Post newPost= new Post();
         newPost.setUser(user);
         newPost.setTitle(title);
@@ -40,6 +37,11 @@ public class PostService {
 
         return postRepository.save(newPost);
     }
+
+//    public List<Post> getPostById(Integer userId){
+//        return postRepository.findByUserId(userId);
+//    }
+
 
     public List<Post> getAllPosts(){
         return postRepository.findAll();

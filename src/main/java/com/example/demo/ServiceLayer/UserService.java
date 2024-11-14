@@ -16,23 +16,22 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUserByAuth0Id(String auth0Id) {
-        return userRepository.findByauth0id(auth0Id);
-    }
+//    public User getUserByAuth0Id(String auth0Id) {
+//        return userRepository.findByauth0id(auth0Id);
+//    }
 
-    public User registerUser(String name,String email, String imgUrl, String auth0id){
-        User existingUser= userRepository.findByauth0id(auth0id);
+    public User registerUser(String name,String email, String imgUrl, String auth0id) { //toma los valores de los campos del objeto user y registra elusuario en la base de datos.
+        User existingUser = userRepository.findByauth0id(auth0id);
 
-        if(existingUser == null){
-
-            existingUser = new User();
-            existingUser.setName(name);
-            existingUser.setEmail(email);
-            existingUser.setImgUrl(imgUrl);
-            existingUser.setAuth0id(auth0id);
-            return userRepository.save(existingUser);
+        if (existingUser == null) {
+            User newUser = new User();
+            newUser.setName(name);
+            newUser.setEmail(email);
+            newUser.setImgUrl(imgUrl);
+            newUser.setAuth0id(auth0id);
+            return userRepository.save(newUser);
         }
+
         return existingUser;
     }
-
 }

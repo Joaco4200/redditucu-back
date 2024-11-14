@@ -25,9 +25,6 @@ public class User {
     private String email;
     private String imgUrl;
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Post> posts;
-
 
     public User() {
     }
