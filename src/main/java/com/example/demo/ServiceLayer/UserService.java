@@ -9,12 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
-
     @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private UserRepository userRepository;
 
 //    public User getUserByAuth0Id(String auth0Id) {
 //        return userRepository.findByauth0id(auth0Id);

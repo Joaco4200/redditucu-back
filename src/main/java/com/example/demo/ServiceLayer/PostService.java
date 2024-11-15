@@ -17,14 +17,11 @@ import java.util.List;
 @Service
 public class PostService {
 
-    private final PostRepository postRepository;
-    private final UserRepository userRepository;
-
     @Autowired
-    public PostService(PostRepository postRepository, UserRepository userRepository){
-        this.postRepository = postRepository;
-        this.userRepository = userRepository;
-    }
+    private PostRepository postRepository;
+    @Autowired
+    private UserRepository userRepository;
+
 
     public Post savePost(String auth0id, String title, String content){
         User user= userRepository.findByauth0id(auth0id);
@@ -38,10 +35,9 @@ public class PostService {
         return postRepository.save(newPost);
     }
 
-//    public List<Post> getPostById(Integer userId){
-//        return postRepository.findByUserId(userId);
-//    }
-
+    public Post getPostById(Integer id){
+        return postRepository.findPostById(id);
+    }
 
     public List<Post> getAllPosts(){
         return postRepository.findAll();

@@ -12,16 +12,12 @@ import java.util.List;
 public class PostController {
 
     @Autowired
-    PostService postService;
+    private PostService postService;
 
-    public PostController(PostService postService) {
-        this.postService = postService;
+    @GetMapping("/getpost/{postid}")
+    public Post getPostById(@PathVariable Integer postid){
+        return postService.getPostById(postid);
     }
-
-//    @GetMapping
-//    public List<Post> getPostByUserId(Integer id) {
-//        return postService.getPostById(id);
-//    }
 
     @GetMapping("/getpost")
     public List<Post> getAllPosts() {
