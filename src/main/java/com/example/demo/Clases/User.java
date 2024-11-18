@@ -20,7 +20,7 @@ public class User {
     )
 
     private Integer id;
-    private String auth0id ;
+    private String auth0id;
     private String name;
     private String email;
     private String imgUrl;
@@ -69,14 +69,4 @@ public class User {
         this.imgUrl = imgUrl;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", auth0_id='" + auth0id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
-                '}';
-    }
 }

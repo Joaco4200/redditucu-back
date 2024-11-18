@@ -16,11 +16,11 @@ public class CommentController {
 
     @PostMapping("/comment")
     public Comment saveComment(@RequestBody Comment comment) {
-        return commentService.saveComment(comment.getContent(), comment.getUser().getAuth0id(), comment.getPost().getId());
+        return commentService.saveComment(comment.getContent(), comment.getUser().getAuth0id(), comment.getPost().getPostId());
     }
 
     @GetMapping("/getComment")
-    public List<Comment> getCommentsByPostId(Integer postId) {
+    public List<Comment> getCommentsByPostId(@RequestParam Integer postId) {
         return commentService.getCommentByPostId(postId);
     }
 }

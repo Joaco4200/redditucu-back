@@ -24,11 +24,11 @@ public class Comment {
     private LocalDate created_at;
 
     @ManyToOne
-    @JoinColumn(name="postid")
+    @JoinColumn(name="post_id")
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name="userid")
+    @JoinColumn(name="user_id")
     private User user;
 
     public Comment() {

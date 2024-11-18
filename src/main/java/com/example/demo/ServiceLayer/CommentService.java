@@ -24,9 +24,9 @@ public class CommentService {
     @Autowired
     private UserRepository userRepository;
 
-    public Comment saveComment(String content, String aut0id, Integer postid){
+    public Comment saveComment(String content, String aut0id, Integer postId){
         User existingUser= userRepository.findByauth0id(aut0id);
-        Post existingPost= postRepository.findPostById(postid);
+        Post existingPost= postRepository.findBypostId(postId);
 
         Comment newComment= new Comment();
         newComment.setContent(content);
@@ -37,7 +37,7 @@ public class CommentService {
         return commentRepository.save(newComment);
     }
 
-    public List<Comment> getCommentByPostId (Integer postid) {
-        return commentRepository.findByPostId(postid);
+    public List<Comment> getCommentByPostId (Integer postId) {
+        return commentRepository.findByPostPostId(postId);
     }
 }

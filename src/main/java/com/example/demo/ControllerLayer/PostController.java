@@ -14,12 +14,12 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/getpost/{postid}")
-    public Post getPostById(@PathVariable Integer postid){
-        return postService.getPostById(postid);
+    @GetMapping("/getPostById")
+    public Post getPostById(@RequestParam Integer postId){
+        return postService.getPostById(postId);
     }
 
-    @GetMapping("/getpost")
+    @GetMapping("/getAllPosts")
     public List<Post> getAllPosts() {
         return postService.getAllPosts();
     }

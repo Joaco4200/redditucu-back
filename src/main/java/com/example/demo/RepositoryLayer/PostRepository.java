@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface PostRepository extends JpaRepository <Post, Integer> {
 //    List<Post> findByUserId(Integer userId);
-    Post findPostById(Integer id);
+    Post findBypostId(Integer postId);
 }
 
 

@@ -21,7 +21,7 @@ public class Post {
     )
 
 
-    private Integer id ;
+    private Integer postId ;
     private String title;
     private String content ;
     private LocalDate created_at ;
@@ -35,14 +35,13 @@ public class Post {
     };
 
 
-    public Integer getId() {
-        return id;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
-
 
     public String getContent() {
         return content;
