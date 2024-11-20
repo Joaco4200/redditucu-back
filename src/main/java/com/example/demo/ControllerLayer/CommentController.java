@@ -1,6 +1,8 @@
 package com.example.demo.ControllerLayer;
 
 import com.example.demo.Clases.Comment;
+import com.example.demo.ClasesDto.CommentDto;
+import com.example.demo.Interfaces.service.ICommentService;
 import com.example.demo.ServiceLayer.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +14,7 @@ import java.util.List;
 public class CommentController {
 
     @Autowired
-    private CommentService commentService;
+    private ICommentService commentService;
 
     @PostMapping("/comment")
     public Comment saveComment(@RequestBody Comment comment) {
@@ -20,7 +22,7 @@ public class CommentController {
     }
 
     @GetMapping("/getComment")
-    public List<Comment> getCommentsByPostId(@RequestParam Integer postId) {
+    public List<CommentDto> getCommentsByPostId(@RequestParam Integer postId) {
         return commentService.getCommentByPostId(postId);
     }
 }

@@ -3,6 +3,9 @@ package com.example.demo.ServiceLayer;
 import com.example.demo.Clases.Comment;
 import com.example.demo.Clases.Post;
 import com.example.demo.Clases.User;
+import com.example.demo.ClasesDto.CommentDto;
+import com.example.demo.Interfaces.service.ICommentService;
+import com.example.demo.Mapper.CommentMapper;
 import com.example.demo.RepositoryLayer.CommentRepository;
 import com.example.demo.RepositoryLayer.PostRepository;
 import com.example.demo.RepositoryLayer.UserRepository;
@@ -15,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CommentService {
+public class CommentService implements ICommentService {
 
     @Autowired
     private CommentRepository commentRepository;
@@ -23,6 +26,8 @@ public class CommentService {
     private PostRepository postRepository;
     @Autowired
     private UserRepository userRepository;
+
+    private static final CommentMapper commentMapper= CommentMapper.INSTANCE;
 
     public Comment saveComment(String content, String aut0id, Integer postId){
         User existingUser= userRepository.findByauth0id(aut0id);
@@ -37,7 +42,8 @@ public class CommentService {
         return commentRepository.save(newComment);
     }
 
-    public List<Comment> getCommentByPostId (Integer postId) {
-        return commentRepository.findByPostPostId(postId);
+    public List<CommentDto> getCommentByPostId (Integer postId) {
+        List<Comment> comments= commentRepository.findByPostPostId(postId);
+        return comments.stream().map(commentMapper::CommentToCommentDto).toList();
     }
 }

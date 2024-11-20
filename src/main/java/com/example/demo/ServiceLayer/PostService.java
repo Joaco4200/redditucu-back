@@ -2,6 +2,9 @@ package com.example.demo.ServiceLayer;
 
 import com.example.demo.Clases.Post;
 import com.example.demo.Clases.User;
+import com.example.demo.ClasesDto.PostDto;
+import com.example.demo.Interfaces.service.IPostService;
+import com.example.demo.Mapper.PostMapper;
 import com.example.demo.RepositoryLayer.PostRepository;
 import com.example.demo.RepositoryLayer.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +18,14 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class PostService {
+public class PostService implements IPostService {
 
     @Autowired
     private PostRepository postRepository;
     @Autowired
     private UserRepository userRepository;
+
+    private static final PostMapper postMapper = PostMapper.INSTANCE;
 
 
     public Post savePost(String auth0id, String title, String content){
@@ -31,15 +36,20 @@ public class PostService {
         newPost.setTitle(title);
         newPost.setContent(content);
         newPost.setCreated_at(LocalDate.now());
-
         return postRepository.save(newPost);
     }
 
-    public Post getPostById(Integer id){
-        return postRepository.findBypostId(id);
+    public PostDto getPostById(Integer id){
+        Post post = postRepository.findBypostId(id);
+        return postMapper.PostToPostDto(post);
     }
 
-    public List<Post> getAllPosts(){
-        return postRepository.findAll();
+    public List<PostDto> getAllPosts(){
+        List<Post> posts= postRepository.findAll();
+        return posts.stream().map(postMapper::PostToPostDto).toList();
     }
+
+
+
+
 }

@@ -1,39 +1,25 @@
-package com.example.demo.Clases;
+package com.example.demo.ClasesDto;
 
-import jakarta.persistence.*;
+import com.example.demo.Clases.User;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "\"post\"")
-public class Post {
-
-    @Id
-    @SequenceGenerator(
-            name= "post_sequence",
-            sequenceName = "post_sequence",
-            allocationSize= 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "post_sequence"
-    )
-
+public class PostDto {
 
     private Integer postId ;
     private String title;
     private String content ;
     private LocalDate created_at ;
+    private User user;
 
-    @ManyToOne
-    @JoinColumn(name= "user_id")
-    private User user ;
+    public PostDto() {}
 
-
-    public Post() {
-    };
-
+    public PostDto(Integer postId, String title, String content, LocalDate created_at) {
+        this.postId = postId;
+        this.title = title;
+        this.content = content;
+        this.created_at = created_at;
+    }
 
     public Integer getPostId() {
         return postId;
@@ -41,6 +27,14 @@ public class Post {
 
     public void setPostId(Integer postId) {
         this.postId = postId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {
@@ -57,14 +51,6 @@ public class Post {
 
     public void setCreated_at(LocalDate created_at) {
         this.created_at = created_at;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public User getUser() {

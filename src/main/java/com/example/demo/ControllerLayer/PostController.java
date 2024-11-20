@@ -1,6 +1,8 @@
 package com.example.demo.ControllerLayer;
 
 import com.example.demo.Clases.Post;
+import com.example.demo.ClasesDto.PostDto;
+import com.example.demo.Interfaces.service.IPostService;
 import com.example.demo.ServiceLayer.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,15 +14,15 @@ import java.util.List;
 public class PostController {
 
     @Autowired
-    private PostService postService;
+    private IPostService postService;
 
     @GetMapping("/getPostById")
-    public Post getPostById(@RequestParam Integer postId){
+    public PostDto getPostById(@RequestParam Integer postId){
         return postService.getPostById(postId);
     }
 
     @GetMapping("/getAllPosts")
-    public List<Post> getAllPosts() {
+    public List<PostDto> getAllPosts() {
         return postService.getAllPosts();
     }
 
