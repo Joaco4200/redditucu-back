@@ -10,4 +10,5 @@ public interface IPostService {
     Post savePost(String auth0id, String title, String content);
     PostDto getPostById(Integer id);
     List<PostDto> getAllPosts();
+    List<PostDto> getPostByUserauth0id(String auth0id);
 }

@@ -9,8 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface PostRepository extends JpaRepository <Post, Integer> {
-//    List<Post> findByUserId(Integer userId);
     Post findBypostId(Integer postId);
+    List<Post> findByUser_auth0id(String auth0id);
 }
 
 

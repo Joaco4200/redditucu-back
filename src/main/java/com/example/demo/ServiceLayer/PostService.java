@@ -49,7 +49,10 @@ public class PostService implements IPostService {
         return posts.stream().map(postMapper::PostToPostDto).toList();
     }
 
-
+    public List<PostDto> getPostByUserauth0id(String auth0id) {
+        List<Post> posts = postRepository.findByUser_auth0id(auth0id);
+        return posts.stream().map(postMapper::PostToPostDto).toList();
+    }
 
 
 }

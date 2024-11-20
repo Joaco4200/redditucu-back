@@ -16,6 +16,11 @@ public class PostController {
     @Autowired
     private IPostService postService;
 
+    @PostMapping("/post")
+    public Post savePost(@RequestBody Post post) {
+        return postService.savePost(post.getUser().getAuth0id(), post.getTitle(), post.getContent());
+    }
+
     @GetMapping("/getPostById")
     public PostDto getPostById(@RequestParam Integer postId){
         return postService.getPostById(postId);
@@ -26,8 +31,8 @@ public class PostController {
         return postService.getAllPosts();
     }
 
-    @PostMapping("/post")
-    public Post savePost(@RequestBody Post post) {
-        return postService.savePost(post.getUser().getAuth0id(), post.getTitle(), post.getContent());
+    @GetMapping("/getUserPosts")
+    public List<PostDto> getUserPosts(@RequestParam String auth0id) {
+        return postService.getPostByUserauth0id(auth0id);
     }
 }
